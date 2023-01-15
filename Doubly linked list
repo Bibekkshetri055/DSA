@@ -1,81 +1,92 @@
 // Doubly linked list implementation using C-programme.
 
-#include<stdio.h>
-#include<stdlib.h>
-struct Node{
-struct Node*next;
-struct Node*prev;
-int data;
-
+#include <stdio.h>
+#include <stdlib.h>
+struct Node
+{
+    struct Node *next;
+    struct Node *prev;
+    int data;
 };
-//insert function to create and insert node ;
-void insert(struct Node**head,int data){
-struct Node*temp=malloc(sizeof(struct Node));//create node
-temp->data=data;//insert data to the node
-temp->next=*head;//point  next of newNode to head
-temp->prev=NULL;//initialize prev of NewNode to NULL
-//checks if list is empty or not 
-if(*head==NULL){
-printf("");
+// insert function to create and insert node ;
+void insert(struct Node **head, int data)
+{
+    struct Node *temp = malloc(sizeof(struct Node)); // create node
+    temp->data = data;                               // insert data to the node
+    temp->next = *head;                              // point  next of newNode to head
+    temp->prev = NULL;                               // initialize prev of NewNode to NULL
+    // checks if list is empty or not
+    if (*head == NULL)
+    {
+        printf("");
+    }
+    else
+    {
+        temp->next->prev = temp; // if not empty sets prev of head to the newly created node
+    }
+    *head = temp;
 }
-else{
-temp->next->prev=temp;// if not empty sets prev of head to the newly created node
+void insert1(struct Node **head, int data)
+{
+    struct Node *temp = malloc(sizeof(struct Node));
+    temp->data = data;
+    temp->next = NULL;
+    temp->prev = NULL;
+    if (*head == NULL)
+    {
+        *head = temp;
+        return;
+    }
+    struct Node *temp1 = *head;
+    while (temp1->next != NULL)
+    {
+        temp1 = temp1->next;
+    }
+    temp1->next = temp;
+    temp->prev = temp1;
 }
-*head=temp;
-
+void print(struct Node *head)
+{
+    while (head != NULL)
+    {
+        printf("%d\n", head->data);
+        head = head->next;
+    }
 }
-void insert1(struct Node**head,int data){
-struct Node*temp=malloc(sizeof(struct Node));
-temp->data=data;
-temp->next=NULL;
-temp->prev=NULL;
-if(*head==NULL){
-*head=temp;
-return;
+int printMid(struct Node *head)
+{
+    struct Node *temp = head;
+    struct Node *temp2 = head;
+    int i = 1;
+    while (i)
+    {
+        if (i % 2 == 1)
+        {
+            temp = temp->next;
+        }
+        temp2 = temp2->next;
+        if (temp2->next == NULL)
+            break;
+        i++;
+    }
+    // printf("The mid element in the list is %d",temp->data);
+    return temp->data;
 }
-struct Node*temp1=*head;
-while(temp1->next!=NULL){
-temp1=temp1->next;
+int main()
+{
+    struct Node *head = NULL;
+    int n;
+    printf("Enter how many elements in the node");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+    {
+        printf("Enter the number");
+        int x;
+        scanf("%d", &x);
+        insert1(&head, x);
+    }
+    print(head);
+    int a = printMid(head);
+    printf("The mid element is :%d", a);
+    free(head);
 }
-temp1->next=temp;
-temp->prev=temp1;
-
-}
-void print(struct Node * head){
-while(head!=NULL){
-printf("%d\n",head->data);
-head=head->next;
-
-}}
-int printMid(struct Node*head){
-struct Node*temp=head;
-struct Node*temp2=head;
-int i=1;
-while(i){
-if(i%2==1){
-temp=temp->next;
-}
-temp2=temp2->next;                                     
-if(temp2->next==NULL)break;
-i++;
-}
-//printf("The mid element in the list is %d",temp->data);
-return temp->data;
-}
-int main(){
-struct Node*head=NULL;
-int n;
-printf("Enter how many elements in the node");
-scanf("%d",&n);
-for(int i=0;i<n;i++){
-printf("Enter the number");
-int x;
-scanf("%d",&x);
-insert1(&head,x);
-}
-print(head);
-int a=printMid(head);
-printf("The mid element is :%d",a);
-free (head);
-}
-
