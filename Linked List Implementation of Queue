@@ -42,12 +42,7 @@ int main()
     Enqueue(&front, &rear, 5);
     Enqueue(&front, &rear, 7);
     Enqueue(&front, &rear, 6);
-        Enqueue(&front,&rear,8);
-        Dequeue(&front,&rear);
-        Dequeue(&front,&rear);
-
-
-
-
-        
-        }
+    Enqueue(&front, &rear, 8);
+    Dequeue(&front, &rear);
+    Dequeue(&front, &rear);
+}
