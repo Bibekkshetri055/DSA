@@ -1,3 +1,4 @@
+// Linked List implementation of Queue . 
 #include <stdio.h>
 #include <stdlib.h>
 struct Node
