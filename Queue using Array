@@ -1,66 +1,66 @@
 //Implementing Queue using array data structure in java
 
 class Queue{ //Queue
-  int rear,front,size; 
-  int []array; 
-Queue(int size){
-  this.size=size; 
-  array=new int[this.size];
-  rear=0; 
-  front=-1;
+	int rear,front,size; 
+	int []array; 
+	Queue(int size){
+		this.size=size; 
+		array=new int[this.size];
+		rear=0; 
+		front=-1;
 
-}
-//taking items out of queue
-void Dequeue(){
-  if(front<rear){
-    rear=0; 
-    front=-1; 
-    System.err.println("Empty Queue!!");
-  }
-  else{
-System.out.println("Item popped out of Queue -->"+array[rear]);
- rear++; 
-  }
+	}
+	//taking items out of queue
+	void Dequeue(){
+		if(front<rear){
+			rear=0; 
+			front=-1; 
+			System.err.println("Empty Queue!!");
+		}
+		else{
+			System.out.println("Item popped out of Queue -->"+array[rear]);
+			rear++; 
+		}
 
-}
-//adding items to the queue
-void Enqueue(int data){
-  if(front==size-1){
-    System.out.println("Queue is full!!");
-  }
-  else{
-    front ++; 
-    array[front]=data; 
-  System.out.println("Item Added--> "+array[front]);
+	}
+	//adding items to the queue
+	void Enqueue(int data){
+		if(front==size-1){
+			System.out.println("Queue is full!!");
+		}
+		else{
+			front ++; 
+			array[front]=data; 
+			System.out.println("Item Added--> "+array[front]);
 
-  }
+		}
 
-}
-//printing queue
-void printQueue(){
-  System.out.println("Items remaining: ");
-  for(int i=rear;i<=front;i++){
-System.out.println(array[i]);
-  }
-}
+	}
+	//printing queue
+	void printQueue(){
+		System.out.println("Items remaining: ");
+		for(int i=rear;i<=front;i++){
+			System.out.println(array[i]);
+		}
+	}
 }
 //Driver Class
 public class Que {
-  public static void main(String[] args) {
-    Queue q1=new Queue(5);
-  q1.Enqueue(5);
-  q1.Enqueue(6);
-  q1.Enqueue(7);
-  q1.Enqueue(8);
-  q1.Enqueue(9);
-q1.Dequeue();
-q1.Dequeue();
-q1.Dequeue();
-q1.Dequeue();
-q1.Dequeue();
-q1.Dequeue();
-  q1.printQueue();
-  }
+	public static void main(String[] args) {
+		Queue q1=new Queue(5);
+		q1.Enqueue(5);
+		q1.Enqueue(6);
+		q1.Enqueue(7);
+		q1.Enqueue(8);
+		q1.Enqueue(9);
+		q1.Dequeue();
+		q1.Dequeue();
+		q1.Dequeue();
+		q1.Dequeue();
+		q1.Dequeue();
+		q1.Dequeue();
+		q1.printQueue();
+	}
 }
 
 
